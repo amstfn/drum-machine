@@ -1,4 +1,3 @@
-```markdown
 # Drum Machine
 
 ![Drum Machine Preview](drum-machine-preview.png)
