@@ -1,6 +1,6 @@
 # Drum Machine
 
-![Drum Machine Preview](drum-machine-preview.png)
+![Drum Machine Preview]([drum-machine-preview.png](https://i.ibb.co/GxBQ1Mk/drum-machine-image.png))
 
 ## Description
 
