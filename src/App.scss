@@ -1,0 +1,231 @@
+$primary-color: #ff3d00;
+$secondary-color: #212121;
+$background-color: #1a1a1a;
+$text-color: #ffffff;
+$animation-duration: 0.5s;
+
+// Base styles
+.drum-machine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $background-color;
+  font-family: 'Arial', sans-serif;
+  color: $text-color;
+  transition: background-color $animation-duration ease;
+
+  &.dark {
+    background-color: $secondary-color;
+  }
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 600px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.buttonHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: transform $animation-duration ease;
+
+  &.active {
+    transform: scale(0.9);
+    box-shadow: 1px 1px 4px 4px $secondary-color, -1px -1px 4px 4px $secondary-color;
+  }
+}
+
+.drum-pad {
+  display: inline-block;
+  margin: 10px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.drum-pad:hover {
+  background-color: #e6e6e6;
+}
+
+.clip {
+  display: none;
+}
+
+// Side Panel
+.side-panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  max-width: 90%;
+  padding: 2rem;
+  background-color: $secondary-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color $animation-duration ease;
+
+  &.dark {
+    background-color: $background-color;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .sidePanel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  input[type='range'] {
+    width: 100%;
+    margin-bottom: 1rem;
+    appearance: none;
+    background-color: $primary-color;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color $animation-duration ease;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background-color: $text-color;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  .speaker {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-top: 2rem;
+  }
+
+  .subSpeaker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: $primary-color;
+    box-shadow: 0 0 20px $primary-color, 0 0 40px $primary-color;
+    transition: transform $animation-duration ease, box-shadow $animation-duration ease;
+
+    &.active {
+      transform: scale(1.2) translate(-50%, -50%);
+      box-shadow: 0 0 20px $primary-color, 0 0 60px $primary-color;
+    }
+  }
+
+  #display {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: $primary-color;
+    color: $text-color;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: default;
+    transition: background-color $animation-duration ease;
+
+    &.dark {
+      background-color: $background-color;
+    }
+  }
+
+  #power {
+    width: 100px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: $primary-color;
+    color: $text-color;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color $animation-duration ease;
+
+    &.dark {
+      background-color: $background-color;
+    }
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  #creator {
+    font-size: 0.8rem;
+    margin-top: 2rem;
+    color: lighten($text-color, 20%);
+  }
+}
+
+#creatorMobilMode {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .side-panel-container  {
+    flex: 0;
+    display: none;
+  }
+
+  .drum-machine {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .drum-pad {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  #creatorMobilMode {
+    display: block;
+    margin: 0 auto;
+  }
+}
